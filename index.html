@@ -1,1 +1,117 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚧 Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at 20% 30%, #1e1e2f, #0c0c1a);
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #e0234e;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #d1d1d1;
+      margin-bottom: 2rem;
+    }
+    .countdown {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .time-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      min-width: 80px;
+    }
+    .time-box span {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .time-label {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    footer {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .pulse {
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="pulse">🚧 Website Under Construction</h1>
+  <p>Launching in:</p>
+
+  <div class="countdown" id="countdown">
+    <div class="time-box"><span id="days">7</span><div class="time-label">Days</div></div>
+    <div class="time-box"><span id="hours">00</span><div class="time-label">Hours</div></div>
+    <div class="time-box"><span id="minutes">00</span><div class="time-label">Minutes</div></div>
+    <div class="time-box"><span id="seconds">00</span><div class="time-label">Seconds</div></div>
+  </div>
+
+  <footer>© 2025 zupzep All rights reserved.</footer>
+
+  <script>
+    // Countdown 7 days from now
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 7);
+
+    const countdown = document.getElementById('countdown');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      daysEl.textContent = days;
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
